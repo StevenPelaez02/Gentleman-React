@@ -13,7 +13,7 @@ interface Data{
 }
 
 function App() {
-  
+   //
   const { data, loading, error } = useFetch<Data>(url)
   // const { data: dataUser, error: errorUser, loading: loadingUser } = useFetch<{name: string}>(userURL)
 

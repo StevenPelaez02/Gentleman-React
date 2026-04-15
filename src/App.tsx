@@ -1,32 +1,31 @@
-import { useFetch } from './hooks'
 import './App.css'
-
-const url = 'https://pokeapi.co/api/v2/pokemon/ditto'
-// userURL
-// const userURL = 'https://pokeapi.co/api/v2/pokemon/ditto'
-
-
-interface Data{
-  name: string,
-  lastname: string,
-  age: number
-}
+import { Button, ColorRed, AppForm } from './components'
+import { GlobalProvider } from './context/global.provider'
 
 function App() {
+
+  const submit = () => {
+    console.log('submit')
+  }
+
+  const handleClick = () => {
+    console.log('uy me clickio todo!')
+  }
+
+  const dimeHola = () => {
+    alert('Hola !')
+  }
   
-  const { data, loading, error } = useFetch<Data>(url)
-  // const { data: dataUser, error: errorUser, loading: loadingUser } = useFetch<{name: string}>(userURL)
-
-  if (loading) {
-    return <p>Loading...</p>
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>
-  }
   return(
-    <div>{JSON.stringify(data)}</div>
+    <GlobalProvider>
+      <ColorRed><Button parentMethod={dimeHola}>My boton rojo</Button></ColorRed>
+      <Button parentMethod={handleClick}>My boton normal</Button>
+      <AppForm>
+        <button type='submit' onClick={submit}>Submit</button>
+      </AppForm>
+    </GlobalProvider>
   )
 }
 
 export default App
+

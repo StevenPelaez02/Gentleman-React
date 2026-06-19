@@ -1,7 +1,7 @@
 import { useState, type ReactNode} from 'react';
 import { GlobalContext } from './global.context';
 
-const EmptyGlobalState: number = 0
+const EmptyGlobalState: number = 0 
 
 interface GlobalProps {
   children: ReactNode

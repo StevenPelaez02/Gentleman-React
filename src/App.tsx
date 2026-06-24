@@ -1,32 +1,25 @@
-import { useFetch } from './hooks'
 import './App.css'
-
-const url = 'https://pokeapi.co/api/v2/pokemon/ditto'
-// userURL
-// const userURL = 'https://pokeapi.co/api/v2/pokemon/ditto'
-
-
-interface Data{
-  name: string,
-  lastname: string,
-  age: number
-}
+import { Modal } from './components'
+import { useModalContext } from './components/Modal/context'
 
 function App() {
-  
-  const { data, loading, error } = useFetch<Data>(url)
-  // const { data: dataUser, error: errorUser, loading: loadingUser } = useFetch<{name: string}>(userURL)
 
-  if (loading) {
-    return <p>Loading...</p>
+  const { setState } = useModalContext()
+
+  const openModal = () => {
+    setState(true)
   }
 
-  if (error) {
-    return <p>Error: {error.message}</p>
-  }
   return(
-    <div>{JSON.stringify(data)}</div>
+    <>
+      <Modal>
+        <h2>Hola EVZODA</h2>
+        <h3>Te quiero</h3>
+      </Modal>
+      <button onClick={openModal}>Abrete Sesamo</button>
+    </>
   )
 }
 
 export default App
+
